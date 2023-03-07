@@ -1,4 +1,4 @@
-name: json_to_dart_class
+name: json_parser
 description: A sample command-line application.
 version: 1.0.0
 # repository: https://github.com/my_org/my_repo
@@ -6,7 +6,7 @@ version: 1.0.0
 environment:
   sdk: '>=2.19.2 <3.0.0'
 executables:
-  json_to_dart_class:
+  json_parser:
 
 # dependencies:
 #   path: ^1.8.0
