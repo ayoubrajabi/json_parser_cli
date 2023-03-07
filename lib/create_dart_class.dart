@@ -7,7 +7,7 @@ void createFileRecursively(
   String className,
   Map<String, dynamic> json,
 ) {
-  final filePath = 'constants/$filename.dart';
+  final filePath = 'lib/constants/$filename.dart';
   File(filePath).create(recursive: true).then((value) async {
     var myFile = File(filePath);
     var sink = myFile.openWrite();
