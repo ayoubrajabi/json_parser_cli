@@ -4,12 +4,15 @@ String convertKey(Map<String, dynamic> json) {
   List<String> keys = [];
 
   json.forEach((key, value) {
+    final keyToLowerCase = key.toLowerCase();
     keys.add(
-        'static const String ${key.toCamelCase()} = "${key.toSnakeCase()}";\n');
+        'static const String ${keyToLowerCase.toCamelCase()} = "${keyToLowerCase.toSnakeCase()}";\n');
   });
 
+  final removeDuplicates = keys.toSet().toList();
+
   final removeBrackets =
-      keys.toString().replaceAll('[', '').replaceAll(']', '');
+      removeDuplicates.toString().replaceAll('[', '').replaceAll(']', '');
   final replaceComaWithSemicolon = removeBrackets.replaceAll(',', '');
 
   final String variables = replaceComaWithSemicolon;
