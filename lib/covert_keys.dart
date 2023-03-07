@@ -5,7 +5,7 @@ String convertKey(Map<String, dynamic> json) {
 
   json.forEach((key, value) {
     keys.add(
-        'static const String ${key.toCamelCase()} = "${key.toSnakeCase()}";');
+        'static const String ${key.toCamelCase()} = "${key.toSnakeCase()}";\n');
   });
 
   final removeBrackets =
