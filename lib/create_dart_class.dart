@@ -2,13 +2,17 @@ import 'dart:io';
 
 import 'covert_keys.dart';
 
-void createFileRecursively(String filename, Map<String, dynamic> json) {
+void createFileRecursively(
+  String filename,
+  String className,
+  Map<String, dynamic> json,
+) {
   final filePath = 'constants/$filename.dart';
   File(filePath).create(recursive: true).then((value) async {
     var myFile = File(filePath);
     var sink = myFile.openWrite();
     sink.write('''
-class TranslateConstants {
+class $className {
   ${convertKey(json)}
 }
 ''');
