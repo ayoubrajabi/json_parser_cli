@@ -1,10 +1,18 @@
+import 'package:change_case/change_case.dart';
+
 String convertKey(Map<String, dynamic> json) {
   List<String> keys = [];
 
   json.forEach((key, value) {
     keys.add(
-        'static const String ${key[0].toLowerCase()}${key.toString().replaceAll('_', '').substring(1)} = "$key"');
+        'static const String ${key.toCamelCase()} = "${key.toSnakeCase()}";');
   });
 
-  return '${keys.toString().replaceAll('[', '').replaceAll(']', '').replaceAll(',', ';')};';
+  final removeBrackets =
+      keys.toString().replaceAll('[', '').replaceAll(']', '');
+  final replaceComaWithSemicolon = removeBrackets.replaceAll(',', '');
+
+  final String variables = replaceComaWithSemicolon;
+
+  return variables;
 }
